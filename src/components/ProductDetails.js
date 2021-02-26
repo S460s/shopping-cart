@@ -6,9 +6,11 @@ const ProductDetails = () => {
 	const product = products[id];
 	const [amount, setAmount] = useState(product.amount);
 
-	const handleBuy = () => {
-		product.amount++;
-		setAmount(product.amount);
+	const handleBuy = (e) => {
+		if (e.target.value > 0) {
+			product.amount = e.target.value;
+			setAmount(product.amount);
+		}
 	};
 
 	return (
@@ -18,7 +20,7 @@ const ProductDetails = () => {
 			<p>Price: {product.price}</p>
 			<p>Description: {product.description}</p>
 			<p>Amount: {amount}</p>
-			<button onClick={handleBuy}>+</button>
+			<input min='0' type='number' onChange={handleBuy} value={amount} />
 		</div>
 	);
 };

@@ -38,10 +38,7 @@ const products = [
 ];
 
 const productNum = () => {
-	let num = products.reduce((acc, product) => {
-		return acc + product.amount;
-	}, 0);
-	return num;
+	return products.reduce((acc, product) => acc + +product.amount, 0);
 };
 export { productNum };
 export default products;
