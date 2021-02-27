@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from '../Routes';
 import '../styles/Nav.css';
-import products from '../products';
 const Nav = () => {
+	const [itemCount, setItemCount] = useState(0);
+
 	return (
 		<nav>
 			<Link to='/'>
@@ -10,6 +12,9 @@ const Nav = () => {
 			</Link>
 			<Link to='/catalog'>
 				<span>Catalog</span>
+			</Link>
+			<Link to='/checkout'>
+				<span>Cart {itemCount}</span>
 			</Link>
 		</nav>
 	);

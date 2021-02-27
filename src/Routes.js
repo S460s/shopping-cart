@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Nav from './components/Nav';
 import Catalog from './components/Catalog';
 import ProductDetails from './components/ProductDetails';
 import Checkout from './components/Checkout';
+import products from './products';
+
+const ProductsContext = createContext(products);
 const Routes = () => {
 	return (
 		<Router>
-			<Nav />
-			<Switch>
-				<Route exact path='/' component={App} />
-				<Route path='/catalog' component={Catalog} />
-				<Route path='/product/:id' component={ProductDetails} />
-				<Route path='/checkout' component={Checkout} />
-			</Switch>
+			<ProductsContext.Provider value={products}>
+				<Nav />
+				<Switch>
+					<Route exact path='/'>
+						<App />
+					</Route>
+					<Route path='/catalog'>
+						<Catalog />
+					</Route>
+					<Route path='/product/:id'>
+						<ProductDetails />
+					</Route>
+					<Route path='/checkout'>
+						<Checkout />
+					</Route>
+				</Switch>
+			</ProductsContext.Provider>
 		</Router>
 	);
 };
-
+export { ProductsContext };
 export default Routes;
