@@ -37,8 +37,17 @@ const products = {
 			id: 3,
 		},
 	],
-	amount() {
+	totalAmount() {
 		return this.items.reduce((acc, product) => acc + +product.amount, 0);
+	},
+	totalPrice() {
+		return this.items.reduce((acc, product) => {
+			let itemPrice = 0;
+			for (let i = 0; i < +product.amount; i++) {
+				itemPrice += +product.price;
+			}
+			return acc + itemPrice;
+		}, 0);
 	},
 };
 

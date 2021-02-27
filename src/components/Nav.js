@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../Routes';
 import '../styles/Nav.css';
 const Nav = () => {
-	const { products, count, setCount } = useContext(ProductsContext);
-	console.log(products);
+	const { count } = useContext(ProductsContext);
 
-	console.log(products.amount());
 	return (
 		<nav>
 			<Link to='/'>

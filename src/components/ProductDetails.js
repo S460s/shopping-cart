@@ -4,19 +4,20 @@ import { ProductsContext } from '../Routes';
 const ProductDetails = () => {
 	const { products, setCount } = useContext(ProductsContext);
 	const { id } = useParams();
+
 	const product = products.items[id];
 	const [amount, setAmount] = useState(product.amount);
 	const handleBuy = (e) => {
 		if (e.target.value >= 0) {
 			product.amount = e.target.value;
 			setAmount(product.amount);
-			setCount(products.amount());
+			setCount(products.totalAmount());
 		}
 	};
 
 	return (
 		<div>
-			<img src={product.url} alt='' />
+			<img src={product.url} alt={product.name} />
 			<p>Name: {product.name}</p>
 			<p>Price: {product.price}</p>
 			<p>Description: {product.description}</p>

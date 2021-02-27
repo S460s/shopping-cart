@@ -1,9 +1,10 @@
-import React from 'react';
-import products from '../products.js';
+import React, { useContext } from 'react';
 import ProductCard from './ProductCard';
 import '../styles/Catalog.css';
+import { ProductsContext } from '../Routes';
 
 const Catalog = () => {
+	const { products } = useContext(ProductsContext);
 	const productComponents = products.items.map((product) => {
 		return <ProductCard data={product} key={product.id} />;
 	});
