@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Nav from './components/Nav';
@@ -7,11 +7,12 @@ import ProductDetails from './components/ProductDetails';
 import Checkout from './components/Checkout';
 import products from './products';
 
-const ProductsContext = createContext(products);
+const ProductsContext = createContext();
 const Routes = () => {
+	const [count, setCount] = useState(0);
 	return (
 		<Router>
-			<ProductsContext.Provider value={products}>
+			<ProductsContext.Provider value={{ products, count, setCount }}>
 				<Nav />
 				<Switch>
 					<Route exact path='/'>

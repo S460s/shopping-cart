@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import products from '../products';
+import { ProductsContext } from '../Routes';
 const ProductDetails = () => {
+	const { products, setCount } = useContext(ProductsContext);
 	const { id } = useParams();
-	const product = products[id];
+	const product = products.items[id];
 	const [amount, setAmount] = useState(product.amount);
-
 	const handleBuy = (e) => {
-		if (e.target.value > 0) {
+		if (e.target.value >= 0) {
 			product.amount = e.target.value;
 			setAmount(product.amount);
+			setCount(products.amount());
 		}
 	};
 

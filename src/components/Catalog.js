@@ -1,11 +1,10 @@
 import React from 'react';
-import products, { productNum } from '../products.js';
+import products from '../products.js';
 import ProductCard from './ProductCard';
 import '../styles/Catalog.css';
-import { Link } from 'react-router-dom';
 
 const Catalog = () => {
-	const productComponents = products.map((product) => {
+	const productComponents = products.items.map((product) => {
 		return <ProductCard data={product} key={product.id} />;
 	});
 

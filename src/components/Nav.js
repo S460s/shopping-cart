@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../Routes';
 import '../styles/Nav.css';
 const Nav = () => {
-	const [itemCount, setItemCount] = useState(0);
+	const { products, count, setCount } = useContext(ProductsContext);
+	console.log(products);
 
+	console.log(products.amount());
 	return (
 		<nav>
 			<Link to='/'>
@@ -14,7 +16,7 @@ const Nav = () => {
 				<span>Catalog</span>
 			</Link>
 			<Link to='/checkout'>
-				<span>Cart {itemCount}</span>
+				<span>Cart {count}</span>
 			</Link>
 		</nav>
 	);
