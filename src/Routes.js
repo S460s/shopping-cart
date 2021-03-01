@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import App from './App';
 import Nav from './components/Nav';
 import Catalog from './components/Catalog';
@@ -11,7 +11,7 @@ const ProductsContext = createContext();
 const Routes = () => {
 	const [count, setCount] = useState(0);
 	return (
-		<Router>
+		<HashRouter basename='/'>
 			<ProductsContext.Provider value={{ products, count, setCount }}>
 				<Nav />
 				<Switch>
@@ -29,7 +29,7 @@ const Routes = () => {
 					</Route>
 				</Switch>
 			</ProductsContext.Provider>
-		</Router>
+		</HashRouter>
 	);
 };
 export { ProductsContext };

@@ -49,10 +49,11 @@ const products = {
 			return acc + itemPrice;
 		}, 0);
 	},
+	resetAmount() {
+		this.items.forEach((item) => {
+			item.amount = 0;
+		});
+	},
 };
 
-const productNum = () => {
-	return products.reduce((acc, product) => acc + +product.amount, 0);
-};
-export { productNum };
 export default products;

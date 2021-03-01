@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import ProductCard from './ProductCard';
-import '../styles/Catalog.css';
 import { ProductsContext } from '../Routes';
 
 const Catalog = () => {
